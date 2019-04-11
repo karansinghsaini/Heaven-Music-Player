@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Musicplayer from './audioplayer';
+import Bottomplayer from './bottomplayer';
 import '../App.css';
 import pop from '../images/genre/pop.jpg';
 import edm from '../images/genre/edm.jpg';
@@ -31,7 +31,7 @@ const GenreTile = () => {
           </Link>
           </div>
           </div>
-          <Musicplayer />
+          <Bottomplayer />
         </div>
     )}
 

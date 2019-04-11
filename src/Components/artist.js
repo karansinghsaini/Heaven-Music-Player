@@ -1,6 +1,6 @@
 import React  from 'react';
 import {Link} from 'react-router-dom';
-
+import Bottomplayer from './bottomplayer';
 import '../App.css';
 import lp from '../images/artist/lp.jpg';
 import eminem from '../images/artist/eminem.jpg';
@@ -9,6 +9,7 @@ import skrillex from '../images/artist/skrillex.png';
 const ArtistTile = () => {
 
     return(
+      <div>
         <div className = 'divartist'>
           <div className = 'lpCard'>
             <Link to='/Person'>
@@ -28,6 +29,8 @@ const ArtistTile = () => {
                 <p className='nameartist'>SKRILLEX</p>
             </Link>
           </div>
+        </div>
+        <Bottomplayer />
         </div>
     )}
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Slide } from 'react-slideshow-image';
 import {withRouter} from 'react-router-dom';
 import Player from './video';
-import Musicplayer from './audioplayer';
+import Bottomplayer from './bottomplayer';
 import '../App.css';
 import bg1 from '../images/1.jpg';
 import bg2 from '../images/2.jpg';
@@ -40,7 +40,7 @@ const Slideshow = () => {
       <h3 className = "header">Trending Video</h3>
       <Player />
       <h3 className = "header">Listen To Songs</h3>
-      <Musicplayer />
+      <Bottomplayer />
       </div>
     )
 }

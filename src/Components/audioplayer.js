@@ -4,8 +4,8 @@ import '../style.css';
 import noBodyCanSaveMeNow from "../LP/1.mp3";
 import goodBye from "../LP/2.mp3";
 import ttm from "../LP/3.mp3";
-import bs from "../LP/4.mp3"
-import invisible from "../LP/5.mp3";;
+import bs from "../LP/4.mp3";
+import invisible from "../LP/5.mp3";
 
 function getTime(time) {
   if (!isNaN(time)) {

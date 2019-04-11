@@ -14,8 +14,9 @@ const Navbar = (props) => {
                 <li><Link to='/genretile'>Genre</Link></li>
                 <li><Link to='/artist'>Artist</Link></li>
                 <li><Link to='/charts'>Charts</Link></li>
+                <li><Link to='/audioplayer'>Player</Link></li>
             </ul>
-            <Link to='/Info' className='brand-logo right'>Login</Link>
+            <Link to='/login' className='brand-logo right'>Login</Link>
         </nav>
     )
 }
