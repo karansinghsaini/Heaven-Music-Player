@@ -1,3 +1,8 @@
+h3{
+  font-family: fantasy;
+}
+
+
 .logins{
   margin-left: 400px;
   background-color: white;
@@ -16,6 +21,8 @@ input[type="text"]{
 }
 label{
   font-weight: bold;
+  font-family: cursive;
+  font-style: italic;
 }
 
 form{

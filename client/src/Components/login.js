@@ -1,34 +1,13 @@
 import React from 'react';
 import './login.css';
 
-class Header extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>{this.props.text}</h1>
-      </div>
-    )
-  }
-}
-
-class Footer extends React.Component {
-  render() {
-    return <div><h3>{this.props.text}</h3></div>
-  }
-}
 
 class LoginForm extends React.Component {
-  getInitialState =() => {
-    return({
-        data: []    
-    });
-}
-
  
   render() {
     return (
-      <div className='container'>
-        <form onsubmit = {this.handleSubmit}>
+      <div>
+        <form onSubmit = {this.handleSubmit}>
         <label>Enter Your Email Id</label>
         <input type="text" ref="eid" placeholder="email id" required />
         <label>Enter Your Password</label>
@@ -39,37 +18,45 @@ class LoginForm extends React.Component {
     )
   }
 
-  handleSubmit = () => {
-    fetch("http://localhost:3001/api/getData")
-      .then(data => data.json())    
-    .then( () => {
-      //getting value from form
-      var emailToCheck = this.refs.eid.value;
-      var passwordToCheck = this.refs.pswd.value;
-      let flag = 0;
-      this.state.data.forEach(dat => {
-        if (dat.email === emailToCheck){
-          if(dat.password === passwordToCheck){
-            flag = 1;
-            alert("Welcome back");
-            return;
-          }
-          else alert('Password is Wrong');
-        }
-      });
-      if (flag === 1) {
-        alert("User not found");
-      }
-    });
-};
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+        
+      //getting value from form
+      fetch("http://localhost:3000/api/getUser")
+      .then(data => {
+        return data.json();
+      })
+      .then(json => {
+        var emailToCheck = this.refs.eid.value;
+        var passwordToCheck = this.refs.pswd.value;
+        let flag = 0;
+        json.forEach(dat => {
+            if (dat.email === emailToCheck){
+              if(dat.password === passwordToCheck){
+                flag = 1;
+                alert("Welcome back");
+                return;
+              }
+              else {
+                flag = 1;
+                alert('Password is Wrong');
+              }
+           }
+        });
+        if (flag === 0) {
+        alert("User not found");
+        }
+          
+        });        
+    };
 }
 
 class Content extends React.Component {
   render() {
     return (
       <div>
-        <h2>{this.props.title}</h2>
+        <h3>{this.props.title}</h3>
         <LoginForm buttonName="Submit"/>
       </div>
     )
@@ -79,11 +66,11 @@ class Content extends React.Component {
 class Main extends React.Component {
   render() {
     return (
-      <div className="logins">
-        <Header/>
-        <Content title="Enter your credentials"/>
-        <Footer/>
+    
+      <div className="logins">        
+        <Content title="Enter Details to LogIn"/>
       </div>
+     
     )
   }
 }
