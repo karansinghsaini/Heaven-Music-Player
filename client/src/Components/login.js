@@ -2,9 +2,6 @@ import React from 'react';
 import './login.css';
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return (
       <div>
@@ -15,10 +12,6 @@ class Header extends React.Component {
 }
 
 class Footer extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return <div><h3>{this.props.text}</h3></div>
   }
@@ -51,13 +44,38 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: "",
-      password: ""
+      data: [],
+      name: "",  
+      email: "",
+      password: "",
+      intervalIsSet: false
     }
     this.clickHandler = this.clickHandler.bind(this)
     this.setUsername = this.setUsername.bind(this)
     this.setPassword = this.setPassword.bind(this)
   }
+
+  componentDidMount() {
+    console.log(this.getDataFromDb())
+    if (!this.state.intervalIsSet) {
+      let interval = setInterval(this.getDataFromDb, 1000);
+      this.setState({ intervalIsSet: interval });
+    }
+  }
+
+  // never let a process live forever
+  // always kill a process everytime we are done using it
+  componentWillUnmount() {
+    if (this.state.intervalIsSet) {
+      clearInterval(this.state.intervalIsSet);
+      this.setState({ intervalIsSet: null });
+    }
+  }
+
+  getDataFromDb = () => {
+    fetch("http://localhost:3001/api/getUser")
+      .then(data => data.json());
+  };
 
   setUsername(username) {
     this.setState({username: username})
@@ -67,27 +85,32 @@ class LoginForm extends React.Component {
     this.setState({password: password})
   }
 
-  clickHandler() {
-    // put your own code here
-    alert("WELCOME")
+checkUser = (emailToCheck) => {
+  let flag = 0;
+  this.state.data.forEach(dat => {
+    if (dat.email === emailToCheck){
+      flag = 1;
+      console.log("Welcome back");
+      return;
+    }
+  });
+  if (flag === 1) {
+    alert("User not found");
   }
+}
 
   render() {
     return (
       <div>
         <Input id ="username" labelName="Username: " inputType="text" parentFunction={this.setUsername}  />
         <Input id ="password" labelName="Password: " inputType="password" parentFunction={this.setPassword} />
-        <button onClick={this.clickHandler}>{this.props.buttonName}</button>
+        <button onClick={this.checkUser(this.state.email)}>{this.props.buttonName}</button>
       </div>
     )
   }
 }
 
 class Content extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <div>

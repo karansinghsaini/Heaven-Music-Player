@@ -1,10 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 import './login.css';
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return (
       <div>
@@ -15,10 +13,6 @@ class Header extends React.Component {
 }
 
 class Footer extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return <div><h3>{this.props.text}</h3></div>
   }
@@ -50,16 +44,40 @@ class Input extends React.Component {
 class SignupForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
+    // eslint-disable-next-line no-undef
+    state = {
+      data: [],
       name: "",  
       email: "",
-      password: ""
-    }
-    
+      password: "",
+      intervalIsSet: false
+    };
     this.setName = this.setName.bind(this)
     this.setEmail = this.setEmail.bind(this)
     this.setPassword = this.setPassword.bind(this)
   }
+
+  componentDidMount() {
+    console.log(this.getDataFromDb())
+    if (!this.state.intervalIsSet) {
+      let interval = setInterval(this.getDataFromDb, 1000);
+      this.setState({ intervalIsSet: interval });
+    }
+  }
+
+  // never let a process live forever
+  // always kill a process everytime we are done using it
+  componentWillUnmount() {
+    if (this.state.intervalIsSet) {
+      clearInterval(this.state.intervalIsSet);
+      this.setState({ intervalIsSet: null });
+    }
+  }
+
+  getDataFromDb = () => {
+    fetch("http://localhost:3001/api/getUser")
+      .then(data => data.json());
+  };
 
   setName(name) {
     this.setState({name: name})
@@ -73,13 +91,26 @@ class SignupForm extends React.Component {
     this.setState({password: password})
   }
 
-  putDataToDB = () => {
+  putDataToDB = (emailToAdd) => {
+    let flag = 0;
+    this.state.data.forEach(dat => {
+      if (dat.email === emailToAdd){
+        flag = 1;
+        return;
+      }
+    });
+
+    if(flag === 1){
+      alert("Email ID Already used. Login Instead");
+    }
+    else{
     axios.post("http://localhost:3001/api/createUser", {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password
     }).then(res => console.log(res.data));
-  };
+  }
+};
 
   render() {
     return (
@@ -87,17 +118,13 @@ class SignupForm extends React.Component {
         <Input id ="name" labelName="Name: " inputType="text" parentFunction={this.setName}  />
         <Input id ="email" labelName="Email: " inputType="text" parentFunction={this.setEmail}  />
         <Input id ="password" labelName="Password: " inputType="password" parentFunction={this.setPassword} />
-        <button onClick={this.putDataToDB}>{this.props.buttonName}</button>
+        <button onClick={this.putDataToDB(this.state.email)}>{this.props.buttonName}</button>
       </div>
     )
   }
 }
 
 class Content extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <div>
