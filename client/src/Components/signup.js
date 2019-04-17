@@ -18,110 +18,56 @@ class Footer extends React.Component {
   }
 }
 
-class Input extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      inputVal: ""
-    }
-    this.changeHandler = this.changeHandler.bind(this)
-  }
-
-  changeHandler(e) {
-    this.props.parentFunction(e.target.value)
-  }
-
-  render() {
-    return (
-      <div>
-        <label>{this.props.labelName}</label>
-        <input type={this.props.inputType} id={this.props.id} onChange={this.changeHandler} />
-      </div>
-    )
-  }
+class SignupForm extends React.Component {
+  getInitialState =() => {
+    return({
+        data: []    
+    });
 }
 
-class SignupForm extends React.Component {
-  constructor(props) {
-    super(props)
-    // eslint-disable-next-line no-undef
-    state = {
-      data: [],
-      name: "",  
-      email: "",
-      password: "",
-      intervalIsSet: false
-    };
-    this.setName = this.setName.bind(this)
-    this.setEmail = this.setEmail.bind(this)
-    this.setPassword = this.setPassword.bind(this)
-  }
-
-  componentDidMount() {
-    console.log(this.getDataFromDb())
-    if (!this.state.intervalIsSet) {
-      let interval = setInterval(this.getDataFromDb, 1000);
-      this.setState({ intervalIsSet: interval });
-    }
-  }
-
-  // never let a process live forever
-  // always kill a process everytime we are done using it
-  componentWillUnmount() {
-    if (this.state.intervalIsSet) {
-      clearInterval(this.state.intervalIsSet);
-      this.setState({ intervalIsSet: null });
-    }
-  }
-
-  getDataFromDb = () => {
-    fetch("http://localhost:3001/api/getUser")
-      .then(data => data.json());
-  };
-
-  setName(name) {
-    this.setState({name: name})
-  }
-
-  setEmail(email) {
-    this.setState({email: email})
-  }
-
-  setPassword(password) {
-    this.setState({password: password})
-  }
-
-  putDataToDB = (emailToAdd) => {
-    let flag = 0;
-    this.state.data.forEach(dat => {
-      if (dat.email === emailToAdd){
-        flag = 1;
-        return;
-      }
-    });
-
-    if(flag === 1){
-      alert("Email ID Already used. Login Instead");
-    }
-    else{
-    axios.post("http://localhost:3001/api/createUser", {
-      name: this.state.name,
-      email: this.state.email,
-      password: this.state.password
-    }).then(res => console.log(res.data));
-  }
-};
-
-  render() {
+ render() {
     return (
-      <div>
-        <Input id ="name" labelName="Name: " inputType="text" parentFunction={this.setName}  />
-        <Input id ="email" labelName="Email: " inputType="text" parentFunction={this.setEmail}  />
-        <Input id ="password" labelName="Password: " inputType="password" parentFunction={this.setPassword} />
-        <button onClick={this.putDataToDB(this.state.email)}>{this.props.buttonName}</button>
+      <div className='container'>
+        <form onsubmit = {this.handleSubmit}>
+        <label>Enter Your Name</label>
+        <input type="text" ref="name" placeholder="Name" required />
+        <label>Enter Your Email Id</label>
+        <input type="text" ref="eid" placeholder="email id" required />
+        <label>Enter Your Password</label>
+        <input type="password" ref="pswd" placeholder="password" required />
+        <input type="submit" value="Sign Up" />
+        </form>
       </div>
     )
   }
+
+  handleSubmit = () => {
+    fetch("http://localhost:3000/api/getData")
+      .then(data => data.json())    
+    .then( () => {
+      //getting value from form
+      var NameToAdd = this.refs.name.value;
+      var emailToAdd = this.refs.eid.value;
+      var passwordToAdd = this.refs.pswd.value;
+      let flag = 0;
+      this.state.data.forEach(dat => {
+        if (dat.email === emailToAdd){
+          flag = 1;
+          return;
+        }
+      });
+      if(flag === 1){
+        alert("Email ID Already used. Login Instead");
+      }
+      else{
+      axios.post("http://localhost:3000/api/createUser", {
+        name: NameToAdd,
+        email: emailToAdd,
+        password: passwordToAdd
+      }).then(res => alert(res.data));
+    }
+    });
+  };
 }
 
 class Content extends React.Component {

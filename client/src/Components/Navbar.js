@@ -15,8 +15,8 @@ const Navbar = (props) => {
                 <li><Link to='/artist'>Artist</Link></li>
                 <li><Link to='/charts'>Charts</Link></li>
                 <li><Link to='/audioplayer'>Player</Link></li>
+                <li><Link to='/login'>Login</Link></li>
             </ul>
-            <Link to='/login' className='brand-logo right'>Login/</Link>
             <Link to='/signup' className='brand-logo right'>Signup</Link>
         </nav>
     )

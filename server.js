@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const router = require('./routes/api');
 const app = express();
 
-const API_PORT = 3001;
+const API_PORT = 3000;
 
 
 mongoose.connect('mongodb://localhost/HeavenPlayer', { useNewUrlParser: true });

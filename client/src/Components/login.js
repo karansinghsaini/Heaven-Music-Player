@@ -17,97 +17,52 @@ class Footer extends React.Component {
   }
 }
 
-class Input extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      inputVal: ""
-    }
-    this.changeHandler = this.changeHandler.bind(this)
-  }
-
-  changeHandler(e) {
-    this.props.parentFunction(e.target.value)
-  }
-
-  render() {
-    return (
-      <div>
-        <label>{this.props.labelName}</label>
-        <input type={this.props.inputType} id={this.props.id} onChange={this.changeHandler} />
-      </div>
-    )
-  }
-}
-
 class LoginForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: [],
-      name: "",  
-      email: "",
-      password: "",
-      intervalIsSet: false
-    }
-    this.clickHandler = this.clickHandler.bind(this)
-    this.setUsername = this.setUsername.bind(this)
-    this.setPassword = this.setPassword.bind(this)
-  }
-
-  componentDidMount() {
-    console.log(this.getDataFromDb())
-    if (!this.state.intervalIsSet) {
-      let interval = setInterval(this.getDataFromDb, 1000);
-      this.setState({ intervalIsSet: interval });
-    }
-  }
-
-  // never let a process live forever
-  // always kill a process everytime we are done using it
-  componentWillUnmount() {
-    if (this.state.intervalIsSet) {
-      clearInterval(this.state.intervalIsSet);
-      this.setState({ intervalIsSet: null });
-    }
-  }
-
-  getDataFromDb = () => {
-    fetch("http://localhost:3001/api/getUser")
-      .then(data => data.json());
-  };
-
-  setUsername(username) {
-    this.setState({username: username})
-  }
-
-  setPassword(password) {
-    this.setState({password: password})
-  }
-
-checkUser = (emailToCheck) => {
-  let flag = 0;
-  this.state.data.forEach(dat => {
-    if (dat.email === emailToCheck){
-      flag = 1;
-      console.log("Welcome back");
-      return;
-    }
-  });
-  if (flag === 1) {
-    alert("User not found");
-  }
+  getInitialState =() => {
+    return({
+        data: []    
+    });
 }
 
+ 
   render() {
     return (
-      <div>
-        <Input id ="username" labelName="Username: " inputType="text" parentFunction={this.setUsername}  />
-        <Input id ="password" labelName="Password: " inputType="password" parentFunction={this.setPassword} />
-        <button onClick={this.checkUser(this.state.email)}>{this.props.buttonName}</button>
+      <div className='container'>
+        <form onsubmit = {this.handleSubmit}>
+        <label>Enter Your Email Id</label>
+        <input type="text" ref="eid" placeholder="email id" required />
+        <label>Enter Your Password</label>
+        <input type="password" ref="pswd" placeholder="password" required />
+        <input type="submit" value="Login In" />
+        </form>
       </div>
     )
   }
+
+  handleSubmit = () => {
+    fetch("http://localhost:3001/api/getData")
+      .then(data => data.json())    
+    .then( () => {
+      //getting value from form
+      var emailToCheck = this.refs.eid.value;
+      var passwordToCheck = this.refs.pswd.value;
+      let flag = 0;
+      this.state.data.forEach(dat => {
+        if (dat.email === emailToCheck){
+          if(dat.password === passwordToCheck){
+            flag = 1;
+            alert("Welcome back");
+            return;
+          }
+          else alert('Password is Wrong');
+        }
+      });
+      if (flag === 1) {
+        alert("User not found");
+      }
+    });
+};
+
 }
 
 class Content extends React.Component {
