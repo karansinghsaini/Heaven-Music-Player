@@ -25,7 +25,7 @@ class SignupForm extends React.Component {
     e.preventDefault();
         
       //getting value from form
-      fetch("http://localhost:3000/api/getUser")
+      fetch("http://localhost:3001/api/getUser")
       .then(data => {
         return data.json();
       })
@@ -44,7 +44,7 @@ class SignupForm extends React.Component {
            alert("Email ID Already used. Login Instead");
         }
         else{
-            axios.post("http://localhost:3000/api/createUser", {
+            axios.post("http://localhost:3001/api/createUser", {
             name: NameToAdd,
             email: emailToAdd,
             password: passwordToAdd

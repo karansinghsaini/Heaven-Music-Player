@@ -1,8 +1,12 @@
 import React from 'react';
 import './login.css';
 
-
 class LoginForm extends React.Component {
+
+  state = {
+    name: null,
+    email: null
+  };
  
   render() {
     return (
@@ -14,8 +18,14 @@ class LoginForm extends React.Component {
         <input type="password" ref="pswd" placeholder="password" required />
         <input type="submit" value="Login In" />
         </form>
+        <h6>Welcome back</h6>
+        <p>{this.state.name}</p>
+        <h6>Email id</h6>
+        <p>{this.state.email}</p>
       </div>
     )
+
+
   }
 
 
@@ -23,7 +33,7 @@ class LoginForm extends React.Component {
     e.preventDefault();
         
       //getting value from form
-      fetch("http://localhost:3000/api/getUser")
+      fetch("http://localhost:3001/api/getUser")
       .then(data => {
         return data.json();
       })
@@ -35,7 +45,7 @@ class LoginForm extends React.Component {
             if (dat.email === emailToCheck){
               if(dat.password === passwordToCheck){
                 flag = 1;
-                alert("Welcome back");
+                this.setState({name: dat.name, email: dat.email});
                 return;
               }
               else {
@@ -52,17 +62,17 @@ class LoginForm extends React.Component {
     };
 }
 
-class Content extends React.Component {
+class Main extends React.Component {
   render() {
     return (
-      <div>
-        <h3>{this.props.title}</h3>
+      <div className="logins">
+        <h3>Enter Details to LogIn</h3>
         <LoginForm buttonName="Submit"/>
       </div>
     )
   }
 }
-
+/*
 class Main extends React.Component {
   render() {
     return (
@@ -74,5 +84,5 @@ class Main extends React.Component {
     )
   }
 }
-
+*/
 export default Main;

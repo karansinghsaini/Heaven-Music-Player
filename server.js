@@ -9,7 +9,7 @@ const cors = require("cors");
 app.use(cors());
 
 
-const API_PORT = 3000;
+const API_PORT = 3001;
 
 
 mongoose.connect('mongodb://localhost/HeavenPlayer', { useNewUrlParser: true });
