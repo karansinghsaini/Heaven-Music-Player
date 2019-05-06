@@ -26,9 +26,9 @@ h3 {
 }
 
 .each-slide span {
+  color: white;
+  font-size: 50px;
   padding: 20px;
-  font-size: 20px;
-  background: #efefef;
   text-align: center;
 }
 
@@ -68,105 +68,8 @@ h3 {
 }
 
 .dropdown-basic-button {
-  display: list-item inline;
+  display: list-item inline; 
 
-}
-
-.divgenre {
-  background-image: url("./images/6.jpg");
-  display: flex;
-  background-size: cover;
-  height: 600px;
-}
-
-.divartist {
-  background-image: url("./images/5.jpg");
-  display: flex;
-  background-size: cover;
-  height: 600px;
-}
-
-.popCard {
-  margin-left: 80px;
-  margin-top: 100px;
-  justify-content: center;
-  background-size: cover;
-  height: 200px;
-  width: 340px;
-}
-
-.rockCard {
-  margin-left: 80px;
-  margin-top: 100px;
-  justify-content: center;
-  background-size: cover;
-  height: 200px;
-  width: 340px;
-}
-
-.edmCard {
-  margin-left: 80px;
-  margin-top: 100px;
-  justify-content: center;
-  background-size: cover;
-  height: 200px;
-  width: 340px;
-}
-
-
-.rapCard {
-  margin-left: 80px;
-  margin-top: 100px;
-  justify-content: center;
-  background-size: cover;
-  height: 200px;
-  width: 340px;
-}
-
-
-.lpCard {
-  margin-left: 80px;
-  margin-top: 100px;
-  justify-content: center;
-  background-size: cover;
-  height: 200px;
-  width: 340px;
-}
-
-.eminemCard {
-  margin-left: 80px;
-  margin-top: 100px;
-  justify-content: center;
-  background-size: cover;
-  height: 200px;
-  width: 340px;
-}
-
-
-.skCard {
-  margin-left: 80px;
-  margin-top: 100px;
-  justify-content: center;
-  background-size: cover;
-  height: 200px;
-  width: 340px;
-}
-
-.artistimg {
-  height: 200px;
-  width: 340px;
-}
-
-.namegenre {
-  color: white;
-  font-weight: bold;
-  margin-left: 130px;
-}
-
-.nameartist {
-  color: red;
-  font-weight: bold;
-  margin-left: 130px;
 }
 
 .right {

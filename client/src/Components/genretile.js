@@ -1,38 +1,70 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Bottomplayer from './bottomplayer';
-import '../App.css';
+import { MDBMask, MDBView, MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import './style.css';
 import pop from '../images/genre/pop.jpg';
 import edm from '../images/genre/edm.jpg';
 import rock from '../images/genre/rock.jpg';
-import rap from '../images/genre/rap.png';
+import rap from '../images/genre/rap.jpg';
 
 const GenreTile = () => {
 
     return(
-      <div>
-        <div className = 'divgenre'>
-          <div className = 'popCard'>
-          <Link to='/Person'>
-            <img className='artistimg' src={pop} alt = 'Pop Music' />
-              <p className='namegenre'>POP</p>
-          </Link>
-          </div>
-          <div className = 'rockCard'>
-          <Link to='/Person'>
-            <img className='artistimg' src={rock} alt = 'Rock Music' />
-              <p className='namegenre'>ROCK</p>
-          </Link>
-          </div>
-          <div className = 'edmCard'>
-          <Link to='/Person'>
-            <img className='artistimg' src={edm} alt = 'EDM' />
-              <p className='namegenre'>EDM</p>
-          </Link>
-          </div>
-          </div>
-          <Bottomplayer />
-        </div>
+        
+      <MDBContainer>
+      <MDBRow>
+          <MDBCol >
+            <MDBView hover zoom>
+              <img
+                src={pop}
+                className="img-fluid"
+                alt="POP"
+              />
+              <MDBMask className="flex-center">
+                <p className="text">POP</p>
+              </MDBMask>
+            </MDBView>
+          </MDBCol>
+          <MDBCol>  
+            <MDBView hover zoom>
+              <img
+                src={edm}
+                className="img-fluid"
+                alt="EDM"
+              />
+              <MDBMask className="flex-center">
+                <p className="white-text">EDM</p>
+              </MDBMask>
+                   </MDBView>
+                 </MDBCol>
+                </MDBRow>
+     <MDBRow >
+       <MDBCol>
+         <MDBView hover zoom>
+              <img
+                src={rock}
+                className="img-fluid"
+                alt="rock"
+              />
+              <MDBMask className="flex-center">
+                <p className="white-text">ROCK</p>
+         </MDBMask>
+      </MDBView>
+    </MDBCol>        
+      <MDBCol>
+         <MDBView hover zoom>
+              <img
+                src={rap}
+                className="img-fluid"
+                alt="rap"
+              />
+         <MDBMask className="flex-center">
+                <p className="white-text">RAP</p>
+         </MDBMask>
+        </MDBView>
+     </MDBCol>
+    </MDBRow>
+      </MDBContainer>
     )}
 
 export default GenreTile;

@@ -18,10 +18,6 @@ class LoginForm extends React.Component {
         <input type="password" ref="pswd" placeholder="password" required />
         <input type="submit" value="Login In" />
         </form>
-        <h6>Welcome back</h6>
-        <p>{this.state.name}</p>
-        <h6>Email id</h6>
-        <p>{this.state.email}</p>
       </div>
     )
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { Slide } from 'react-slideshow-image';
 import {withRouter} from 'react-router-dom';
 import Player from './video';
-import Bottomplayer from './bottomplayer';
 import '../App.css';
 import bg1 from '../images/1.jpg';
 import bg2 from '../images/2.jpg';
@@ -23,7 +22,7 @@ const Slideshow = () => {
       <Slide {...properties}>
         <div className="each-slide">
           <div style={{'backgroundImage': `url(${bg1})`}}>
-            <span>Slide 1</span>
+            <span>WELCOME TO HEAVEN MUSIC</span><br/>
           </div>
         </div>
         <div className="each-slide">
@@ -40,7 +39,7 @@ const Slideshow = () => {
       <h3 className = "header">Trending Video</h3>
       <Player />
       <h3 className = "header">Listen To Songs</h3>
-      <Bottomplayer />
+    
       </div>
     )
 }
