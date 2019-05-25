@@ -11,10 +11,8 @@ const Navbar = (props) => {
             <Link to='/' className='brand-logo left'>Heaven</Link>
             <ul className='right'>
                 <li><Link to='/'>Home</Link></li>
-                <li><Link to='/genretile'>Genre</Link></li>
                 <li><Link to='/artist'>Artist</Link></li>
                 <li><Link to='/charts'>Charts</Link></li>
-                <li><Link to='/audioplayer'>Player</Link></li>
                 <li><Link to='/login'>Login</Link></li>
             </ul>
             <Link to='/signup' className='brand-logo right'>Signup</Link>

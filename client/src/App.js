@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
-import GenreTile from './Components/genretile';
 import ArtistTile from './Components/artist';
-import Musicplayer from './Components/audioplayer';
 import Main from './Components/login';
 import Signup from './Components/signup';
+import LPplayer from './players/lp';
+import Emplayer from './players/eminem';
+import Drplayer from './players/dragons';
+import Adplayer from './players/adele';
+import Charts from './Components/charts';
 
 class App extends Component {
 
@@ -17,11 +20,14 @@ class App extends Component {
                 <Navbar />
                 <Switch>
                     <Route exact path='/' component={Home} />
-                    <Route path='/genretile' component={GenreTile} />
                     <Route path='/artist' component={ArtistTile} />
-                    <Route path='/audioplayer' component={Musicplayer} />
+                    <Route path='/charts' component={Charts} />
                     <Route path='/login' component={Main} />
                     <Route path='/signup' component={Signup} />
+                    <Route path= '/players/lp' component={LPplayer}/>
+                    <Route path= '/players/eminem' component={Emplayer}/>
+                    <Route path= '/players/dragons' component={Drplayer}/>
+                    <Route path= '/players/adele' component={Adplayer}/>
                 </Switch>
             </div>
         </BrowserRouter>

@@ -12,6 +12,25 @@
      });
  });
 
+ /*router.get('/music', (req,res) => {
+	
+	var fileId = req.query.id; 
+	var file = __dirname + '/music/' + fileId;
+	fs.exists(file,(exists) => {
+		if(exists)
+		{
+			var rstream = fs.createReadStream(file);
+			rstream.pipe(res);
+		}
+		else
+		{
+			res.send("Its a 404");
+			res.end();
+		}
+	
+	});
+});*/
+
  router.post('/createUser', (req, res) => {
      let userdata = new UserData();
 

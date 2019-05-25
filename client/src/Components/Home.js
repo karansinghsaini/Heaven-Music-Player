@@ -5,7 +5,7 @@ import Player from './video';
 import '../App.css';
 import bg1 from '../images/1.jpg';
 import bg2 from '../images/2.jpg';
-import bg3 from '../images/3.jpg';
+import bg3 from '../images/33.jpg';
 
 
 const properties = {
