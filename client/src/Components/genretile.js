@@ -10,7 +10,7 @@ import rap from '../images/genre/rap.jpg';
 const GenreTile = () => {
 
     return(
-        
+
       <MDBContainer>
       <MDBRow>
           <MDBCol >
@@ -21,11 +21,11 @@ const GenreTile = () => {
                 alt="POP"
               />
               <MDBMask className="flex-center">
-                <p className="text">POP</p>
+                <p className="white-text">POP</p>
               </MDBMask>
             </MDBView>
           </MDBCol>
-          <MDBCol>  
+          <MDBCol>
             <MDBView hover zoom>
               <img
                 src={edm}
@@ -50,7 +50,7 @@ const GenreTile = () => {
                 <p className="white-text">ROCK</p>
          </MDBMask>
       </MDBView>
-    </MDBCol>        
+    </MDBCol>
       <MDBCol>
          <MDBView hover zoom>
               <img

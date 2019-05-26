@@ -120,7 +120,7 @@ class Drplayer extends Component {
       { id: 10, title: "Radioactive" }
     ].map(item => {
       return (
-        <li
+        <li className="collection-item grey"
           key={item.id}
           onClick={() => this.setState({ selectedTrack: item.title })}
         >
@@ -137,21 +137,21 @@ class Drplayer extends Component {
       <div className="player">
         <h1 className = "title">Top 10 of Imagine Dragons</h1>
         <div className="dcover" /><br />
-        <ul className="songs">{list}</ul>
+        <div className="collection">{list}</div>
         <div className="btnplay">
           {this.state.player === "paused" && (
             <Button onClick={() => this.setState({ player: "playing" })}>
-              Play
+              <i class="fa fa-play"></i>
             </Button>
           )}
           {this.state.player === "playing" && (
             <Button variant="light" onClick={() => this.setState({ player: "paused" })}>
-              Pause
+              <i class="fa fa-pause"></i>
             </Button>
           )}
           {this.state.player === "playing" || this.state.player === "paused" ? (
             <Button variant="light" onClick={() => this.setState({ player: "stopped" })}>
-              Stop
+              <i class="fa fa-stop"></i>
             </Button>
           ) : (
             ""

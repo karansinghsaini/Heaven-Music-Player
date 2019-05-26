@@ -1,23 +1,24 @@
 .title{
     margin-left: 550px;
-    color: red;
+    color: black;
+    font-weight: bold;
     font-style: italic;
   }
-  
+
   .player{
     background-size: cover;
     align-items: justify;
     height: 600px;
   }
-  
+
   .btnplay{
     margin-left: 550px;
   }
-  
+
   .time{
     margin-left: 550px;
   }
-  
+
   .lpcover{
     background-image: url("../music/LP/cover.jpg");
     height: 200px;
@@ -32,7 +33,7 @@
   .lpcover:hover {
     box-shadow: 0 15px 20px 0 rgba(0,0,0,0.2);
   }
-  
+
   Button {
     background: red;
     color: white;
@@ -42,7 +43,7 @@
     box-shadow: 1px 1px 0px 2px rgba (0,0,0,0.3);
     cursor: pointer;
   }
-  
+
   .songs{
     background-color: grey;
     width: 200px;
@@ -60,12 +61,11 @@
   .songs:hover {
     box-shadow: 0 30px 40px 0 rgba(0,0,0,0.2);
   }
-  
+
   .BottomPlayer{
     height: 60px;
   }
-  
+
   img{
     margin-left: 10px;
   }
-  

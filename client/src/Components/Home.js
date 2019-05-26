@@ -27,19 +27,19 @@ const Slideshow = () => {
         </div>
         <div className="each-slide">
           <div style={{'backgroundImage': `url(${bg2})`}}>
-            <span>Slide 2</span>
+            <span>STREAM LATEST MUSIC</span>
           </div>
         </div>
         <div className="each-slide">
           <div style={{'backgroundImage': `url(${bg3})`}}>
-            <span>Slide 3</span>
+            <span>DISCOVER MUSIC</span>
           </div>
         </div>
       </Slide>
       <h3 className = "header">Trending Video</h3>
       <Player />
       <h3 className = "header">Listen To Songs</h3>
-    
+
       </div>
     )
 }

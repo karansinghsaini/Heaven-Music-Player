@@ -168,7 +168,7 @@ class Charts extends Component {
           break;
           case "Radioactive":
             track = radio;
-          break; 
+          break;
           case "Hello":
           track = hello;
           break;
@@ -198,7 +198,7 @@ class Charts extends Component {
           break;
           case "All I Ask":
             track = ask;
-          break; 
+          break;
         default:
           break;
       }
@@ -269,7 +269,7 @@ class Charts extends Component {
       { id: 40, title: "All I Ask" }
     ].map(item => {
       return (
-        <li
+        <li className='collection-item grey'
           key={item.id}
           onClick={() => this.setState({ selectedTrack: item.title })}
         >
@@ -286,21 +286,21 @@ class Charts extends Component {
       <div className="player">
         <h1 className = "title">Top 50</h1>
         <div className="ccover" /><br />
-        <ul className="songs">{list}</ul>
+        <div className="collection">{list}</div>
         <div className="btnplay">
           {this.state.player === "paused" && (
             <Button onClick={() => this.setState({ player: "playing" })}>
-              Play
+              <i class="fa fa-play"></i>
             </Button>
           )}
           {this.state.player === "playing" && (
             <Button variant="light" onClick={() => this.setState({ player: "paused" })}>
-              Pause
+              <i class="fa fa-pause"></i>
             </Button>
           )}
           {this.state.player === "playing" || this.state.player === "paused" ? (
             <Button variant="light" onClick={() => this.setState({ player: "stopped" })}>
-              Stop
+              <i class="fa fa-stop"></i>
             </Button>
           ) : (
             ""

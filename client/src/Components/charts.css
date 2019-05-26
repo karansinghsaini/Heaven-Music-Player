@@ -12,6 +12,7 @@
 
 .btnplay{
   margin-left: 550px;
+  padding-top: 50px;
 }
 
 .time{
@@ -23,7 +24,7 @@
   height: 200px;
   width: 200px;
   margin-left: 550px;
-  background-size: contain; 
+  background-size: contain;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   border-radius: 10px;
@@ -31,16 +32,6 @@
 
 .ccover:hover {
   box-shadow: 0 15px 20px 0 rgba(0,0,0,0.2);
-}
-
-Button {
-  background: red;
-  color: white;
-  margin: 10px;
-  font-size: 10px;
-  border-radius: 10px;
-  box-shadow: 1px 1px 0px 2px rgba (0,0,0,0.3);
-  cursor: pointer;
 }
 
 .songs{
@@ -61,10 +52,14 @@ Button {
   box-shadow: 0 30px 40px 0 rgba(0,0,0,0.2);
 }
 
-.BottomPlayer{
-  height: 60px;
-}
-
 img{
   margin-left: 10px;
+}
+
+.collection-item{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+  text-align: center;
 }
